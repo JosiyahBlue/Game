@@ -1,16 +1,15 @@
 import java.util.Scanner;
 
 public class Game {
-    private Level levelOne;
-    private Level levelTwo;
-    private Level levelThree;
-    private Boolean bonus;
-
     public Game(){
         levelOne = new Level();
         levelTwo = new Level();
         levelThree = new Level();
     }
+    private Level levelOne;
+    private Level levelTwo;
+    private Level levelThree;
+    private Boolean bonus;
 
     public boolean isBonus() {
         return bonus;
@@ -38,7 +37,9 @@ public class Game {
                 }
             }
         }
-        if(isBonus()) points *= 3;
+        if(isBonus()) {
+            points *= 3;
+        }
         return points;
     }
 
@@ -47,6 +48,9 @@ public class Game {
         Scanner s = new Scanner(System.in);
         levelOne.setPoints(s.nextInt());
         levelOne.reachGoal();
+
+    }
+    public int playManyTimes(int num) {
         int max = 0;
         while ( num > 0) {
             play();
@@ -54,5 +58,6 @@ public class Game {
             if (score > max) max = score;
             num--;
         }
+        return max;
     }
 }
